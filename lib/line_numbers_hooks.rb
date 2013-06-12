@@ -4,7 +4,7 @@ class LineNumbersHooks < Redmine::Hook::ViewListener
   def view_layouts_base_body_bottom(context = { })
     hide_line_numbers = "$('.line-numbers').hide();"
     hide_line_numbers = "" if Setting.plugin_line_numbers['show_line_numbers'] == "true"
-    toggle = "$('.CodeRay').append('<button class=line-toggle>Toggle Line Numbers</button>'); $('.line-toggle').click(function () { $('.line-numbers').toggle(); });"
+    toggle = "$('.CodeRay').append('<button class=line-toggle>Toggle Line Numbers</button>'); $('.line-toggle')).button({icons: { primary: \"ui-icon-transferthick-e-w\" }, text: false }).click(function () { $('.line-numbers').toggle(); });"
     toggle = "" if Setting.plugin_line_numbers['show_line_numbers_toggle'] != "true"
     return "<script>
 #{toggle}
